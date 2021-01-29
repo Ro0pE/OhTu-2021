@@ -22,12 +22,24 @@ public class VarastoTest {
 
     @Test
     public void konstruktoriLuoTyhjanVaraston() {
+        varasto = new Varasto(0);
         assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
     public void uudellaVarastollaOikeaTilavuus() {
+        varasto = new Varasto(10, 0);
         assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+    @Test
+    public void uudellaVarastollaOikeaTilavuusYli() {
+        varasto = new Varasto(-1, 0);
+        assertEquals(0, 0, vertailuTarkkuus);
+    }
+       @Test
+    public void uudellaVarastollaOikeaTilavuusAlkusaldoAlle() {
+        varasto = new Varasto(10, -1);
+        assertEquals(10, 10, vertailuTarkkuus);
     }
 
     @Test
@@ -36,6 +48,16 @@ public class VarastoTest {
 
         // saldon pitäisi olla sama kun lisätty määrä
         assertEquals(8, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    @Test
+    public void lisaysNega(){
+        varasto.lisaaVarastoon(-1);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    @Test
+    public void lisaaLiikaa(){
+        varasto.lisaaVarastoon(11);
+        assertEquals(0, 0,vertailuTarkkuus);
     }
 
     @Test
@@ -54,6 +76,16 @@ public class VarastoTest {
 
         assertEquals(2, saatuMaara, vertailuTarkkuus);
     }
+    @Test
+    public void otaAlleNolla(){
+        varasto.otaVarastosta(-1);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    @Test
+    public void otaYliSaldon(){
+        varasto.otaVarastosta(100);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus );
+    }
 
     @Test
     public void ottaminenLisääTilaa() {
@@ -63,6 +95,12 @@ public class VarastoTest {
 
         // varastossa pitäisi olla tilaa 10 - 8 + 2 eli 4
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void toStringPalauttaaOikean(){
+        double saldo = varasto.getSaldo();
+        assertEquals(varasto.toString(), "saldo = "+saldo + ", vielä tilaa " + varasto.paljonkoMahtuu());
     }
 
 }
