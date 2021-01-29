@@ -100,7 +100,7 @@ public class VarastoTest {
     @Test
     public void toStringPalauttaaOikean(){
         double saldo = varasto.getSaldo();
-        assertEquals(varasto.toString(), "saldo = "+saldo + ", vielä tilaa " + varasto.paljonkoMahtuu());
+        assertEquals(varasto.toString(), "saldo = "+saldo + ", vielä tilaa " + varasto.paljonkoMahtuu!!!!!());
     }
 
 }
