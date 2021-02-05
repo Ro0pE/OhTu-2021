@@ -1,7 +1,9 @@
 plugins {
     id 'application'
     id 'jacoco'
+    id 'checkstyle'         
 }
+
 jar {
     manifest {
         attributes 'Main-Class': 'paaohjelma.Main'
