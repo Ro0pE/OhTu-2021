@@ -1,11 +1,7 @@
 plugins {
     id 'application'
     id 'jacoco'
-<<<<<<< HEAD
     id 'checkstyle'         
-=======
-    id 'checkstyle'
->>>>>>> 5f03db99d9b4378d917aede73e3664acd152f0a4
 }
 
 jar {
